@@ -1,0 +1,31 @@
+/* CENTER SPINNING GRADIENT RING (AWS THEME) */
+
+.loader-ring {
+  width: 70px;
+  height: 70px;
+
+  border-radius: 50%;
+  border: 6px solid transparent;
+
+  /* AWS Style Gradient Border */
+  border-image-slice: 1;
+  border-image-source: linear-gradient(
+    to right,
+    #a855f7,
+    #8b5cf6,
+    #3b82f6
+  );
+
+  animation: spin 1.2s linear infinite;
+
+  /* Glow around loader */
+  box-shadow: 0 0 18px rgba(150, 100, 255, 0.4),
+              0 0 30px rgba(70, 130, 255, 0.3);
+}
+
+/* SPINNING ANIMATION */
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}

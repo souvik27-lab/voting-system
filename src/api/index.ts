@@ -1,6 +1,5 @@
 const API_BASE_URL =
-  (import.meta.env.VITE_API_BASE_URL?.replace(/\/$/, "")) + "/api"
-  || "http://localhost:5000/api";
+  import.meta.env.VITE_API_BASE_URL || "http://localhost:5000";
 
 
 
@@ -53,7 +52,8 @@ function transformPoll(poll: any): Poll {
 
 export const api = {
   async getPolls(): Promise<Poll[]> {
-    const response = await fetch(`${API_BASE_URL}/polls`);
+    const response = await fetch(`${API_BASE_URL}/polls`)
+;
     if (!response.ok) {
       throw new Error("Failed to fetch polls");
     }

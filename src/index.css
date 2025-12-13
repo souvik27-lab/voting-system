@@ -3,17 +3,18 @@
 @tailwind utilities;
 
 /* ===============================
-   GLOBAL RESET (NO SCROLLBAR)
+   REMOVE SCROLLBAR (GLOBAL)
 ================================ */
 html,
 body {
   margin: 0;
   padding: 0;
+  height: 100%;
   overflow: hidden;
 }
 
 /* ===============================
-   BASIC FADE IN
+   FADE IN ANIMATIONS
 ================================ */
 @keyframes fadeIn {
   from {

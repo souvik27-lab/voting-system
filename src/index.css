@@ -1,40 +1,7 @@
-/* @tailwind base;
-@tailwind components;
-@tailwind utilities;
-
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(25px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-@keyframes fadeInSlow {
-  0% {
-    opacity: 0;
-    transform: translateY(25px);
-  }
-  100% {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-.animate-fadeInSlow {
-  animation: fadeInSlow 0.8s ease-out forwards;
-} */
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-/* =========================
-   BASIC FADE ANIMATION
-========================= */
 @keyframes fadeIn {
   from {
     opacity: 0;
@@ -46,9 +13,6 @@
   }
 }
 
-/* =========================
-   SLOW FADE (Already used)
-========================= */
 @keyframes fadeInSlow {
   0% {
     opacity: 0;
@@ -64,46 +28,4 @@
   animation: fadeInSlow 0.8s ease-out forwards;
 }
 
-/* =========================
-   NEW: FADE UP (Premium)
-========================= */
-@keyframes fadeUp {
-  from {
-    opacity: 0;
-    transform: translateY(30px) scale(0.98);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0) scale(1);
-  }
-}
 
-/* =========================
-   NEW: FLOATING CARD
-========================= */
-@keyframes float {
-  0%, 100% {
-    transform: translateY(0);
-  }
-  50% {
-    transform: translateY(-12px);
-  }
-}
-
-/* =========================
-   UTILITY CLASSES
-========================= */
-.animate-fadeUp {
-  animation: fadeUp 0.6s ease-out forwards;
-}
-
-.animate-float {
-  animation: float 4s ease-in-out infinite;
-}
-
-/* =========================
-   SMOOTH SCROLL (Bonus)
-========================= */
-html {
-  scroll-behavior: smooth;
-}

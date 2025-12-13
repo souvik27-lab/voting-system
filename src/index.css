@@ -1,4 +1,4 @@
-@tailwind base;
+/* @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
@@ -56,4 +56,68 @@
 ================================ */
 html {
   scroll-behavior: smooth;
+} */
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ===============================
+   GLOBAL FIX (NO SCROLLBAR)
+================================ */
+html,
+body,
+#root {
+  height: 100%;
+  margin: 0;
+  overflow: hidden; /* ✅ MAIN SCROLL FIX */
 }
+
+/* ===============================
+   BASIC FADE IN ANIMATION
+================================ */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(25px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInSlow {
+  0% {
+    opacity: 0;
+    transform: translateY(25px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fadeInSlow {
+  animation: fadeInSlow 0.8s ease-out forwards;
+}
+
+/* ===============================
+   SOFT FLOAT (ONLY GREY BOX)
+================================ */
+@keyframes softFloat {
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-6px);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+.animate-soft-float {
+  animation: softFloat 6s ease-in-out infinite;
+}
+

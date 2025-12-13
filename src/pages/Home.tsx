@@ -1,8 +1,8 @@
-import { Link } from "react-router-dom";
-import { useGetPolls } from "../api/hooks";
-import { PollCard } from "../components/PollCard";
-import { Loader } from "../components/Loader";
-import { Vote, TrendingUp } from "lucide-react";
+import { Link } from 'react-router-dom';
+import { useGetPolls } from '../api/hooks';
+import { PollCard } from '../components/PollCard';
+import { Loader } from '../components/Loader';
+import { Vote, TrendingUp } from 'lucide-react';
 
 export const Home = () => {
   const { data: polls, isLoading, error } = useGetPolls();
@@ -24,16 +24,14 @@ export const Home = () => {
   if (error) {
     return (
       <div className="w-full h-screen flex justify-center items-center">
-        <div
-          className="
-            w-[460px]
-            bg-white/10 backdrop-blur-2xl
-            border border-red-500/40
-            shadow-xl shadow-red-600/30
-            rounded-2xl p-10 text-center
-            animate-fadeInSlow
-          "
-        >
+        <div className="
+          w-[460px]
+          bg-white/10 backdrop-blur-2xl
+          border border-red-500/40
+          shadow-xl shadow-red-600/30
+          rounded-2xl p-10 text-center
+          animate-fadeInSlow
+        ">
           <p className="text-red-300 text-2xl font-semibold">
             Failed to load polls
           </p>
@@ -69,14 +67,12 @@ export const Home = () => {
       <Vote className="w-14 h-14 text-[#3B82F6] drop-shadow-lg animate-fadeInSlow" />
 
       {/* HEADING */}
-      <h1
-        className="
-          text-6xl font-extrabold mt-4 text-center
-          bg-gradient-to-r from-[#A855F7] via-[#8B5CF6] to-[#3B82F6]
-          bg-clip-text text-transparent
-          animate-fadeInSlow
-        "
-      >
+      <h1 className="
+        text-6xl font-extrabold mt-4 text-center
+        bg-gradient-to-r from-[#A855F7] via-[#8B5CF6] to-[#3B82F6]
+        bg-clip-text text-transparent
+        animate-fadeInSlow
+      ">
         Available Polls
       </h1>
 
@@ -85,9 +81,7 @@ export const Home = () => {
         Browse and participate in polls. Your voice matters!
       </p>
 
-      {/* ===========================
-          EMPTY STATE (NO POLLS)
-      ============================ */}
+      {/* ================= EMPTY STATE ================= */}
       {!polls || polls.length === 0 ? (
         <div
           className="
@@ -95,10 +89,13 @@ export const Home = () => {
             bg-white/10 backdrop-blur-2xl
             rounded-2xl border border-white/10
             p-12 text-center mt-20
-            shadow-xl
-            transition-all duration-500
-            hover:scale-[1.02]
+
+            animate-fadeInSlow
+            animate-soft-float
+
+            hover:-translate-y-1
             hover:shadow-[0_0_40px_rgba(99,102,241,0.25)]
+            transition-all duration-500
           "
         >
           <TrendingUp className="w-16 h-16 text-gray-300 mx-auto mb-6" />
@@ -125,9 +122,6 @@ export const Home = () => {
           </Link>
         </div>
       ) : (
-        /* ===========================
-              POLL LIST
-        ============================ */
         <div className="w-full flex justify-center mt-16 animate-fadeInSlow">
           <div className="grid grid-cols-1 gap-10">
             {polls.map((poll) => (

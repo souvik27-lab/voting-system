@@ -1,46 +1,21 @@
-/* @tailwind base;
-@tailwind components;
-@tailwind utilities;
-
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(25px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-@keyframes fadeInSlow {
-  0% {
-    opacity: 0;
-    transform: translateY(25px);
-  }
-  100% {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-.animate-fadeInSlow {
-  animation: fadeInSlow 0.8s ease-out forwards;
-}
-
- */
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-/* ===============================
-   BASIC FADE IN ANIMATION
-================================ */
-@keyframes fadeIn {
+/* ===== GLOBAL SCROLL FIX ===== */
+html,
+body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  overflow: hidden;
+}
+
+/* ===== SMOOTH FADE IN ===== */
+@keyframes fadeInSlow {
   from {
     opacity: 0;
-    transform: translateY(25px);
+    transform: translateY(18px);
   }
   to {
     opacity: 1;
@@ -48,44 +23,6 @@
   }
 }
 
-@keyframes fadeInSlow {
-  0% {
-    opacity: 0;
-    transform: translateY(25px);
-  }
-  100% {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
 .animate-fadeInSlow {
   animation: fadeInSlow 0.8s ease-out forwards;
-}
-
-/* ===============================
-   SOFT FLOAT (ONLY GREY BOX)
-   very subtle – professional
-================================ */
-@keyframes softFloat {
-  0% {
-    transform: translateY(0);
-  }
-  50% {
-    transform: translateY(-6px);
-  }
-  100% {
-    transform: translateY(0);
-  }
-}
-
-.animate-soft-float {
-  animation: softFloat 6s ease-in-out infinite;
-}
-
-/* ===============================
-   OPTIONAL: SMOOTH SCROLL
-================================ */
-html {
-  scroll-behavior: smooth;
 }

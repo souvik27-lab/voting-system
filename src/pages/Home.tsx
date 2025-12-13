@@ -104,6 +104,7 @@
 // };
 
 
+import { Link } from 'react-router-dom';
 import { useGetPolls } from '../api/hooks';
 import { PollCard } from '../components/PollCard';
 import { Loader } from '../components/Loader';
@@ -124,7 +125,7 @@ export const Home = () => {
   }
 
   /* ===========================
-        ERROR STATE (THEMED)
+        ERROR STATE
   ============================ */
   if (error) {
     return (
@@ -132,15 +133,14 @@ export const Home = () => {
         <div
           className="
             w-[460px]
-            bg-white/10 backdrop-blur-2xl 
-            border border-red-500/40 
-            shadow-xl shadow-red-600/30 
-            rounded-2xl p-10 text-center 
+            bg-white/10 backdrop-blur-2xl
+            border border-red-500/40
+            shadow-xl shadow-red-600/30
+            rounded-2xl p-10 text-center
             animate-fadeInSlow
-            transition-all duration-500
           "
         >
-          <p className="text-red-300 text-2xl font-semibold drop-shadow">
+          <p className="text-red-300 text-2xl font-semibold">
             Failed to load polls
           </p>
 
@@ -151,10 +151,9 @@ export const Home = () => {
           <button
             onClick={() => window.location.reload()}
             className="
-              mt-6 px-8 py-2 rounded-lg 
-              bg-gradient-to-r from-red-500 to-red-700 
+              mt-6 px-8 py-2 rounded-lg
+              bg-gradient-to-r from-red-500 to-red-700
               text-white font-medium
-              shadow-md hover:shadow-red-500/40
               hover:scale-105
               transition-all duration-300
             "
@@ -170,7 +169,7 @@ export const Home = () => {
         MAIN CONTENT
   ============================ */
   return (
-    <div className="w-full flex flex-col justify-center items-center mt-24 px-4">
+    <div className="w-full flex flex-col items-center mt-24 px-4">
 
       {/* ICON */}
       <Vote className="w-14 h-14 text-[#3B82F6] drop-shadow-lg animate-fadeInSlow" />
@@ -180,7 +179,7 @@ export const Home = () => {
         className="
           text-6xl font-extrabold mt-4 text-center
           bg-gradient-to-r from-[#A855F7] via-[#8B5CF6] to-[#3B82F6]
-          bg-clip-text text-transparent drop-shadow-xl
+          bg-clip-text text-transparent
           animate-fadeInSlow
         "
       >
@@ -192,7 +191,7 @@ export const Home = () => {
         Browse and participate in polls. Your voice matters!
       </p>
 
-      {/* POLL LIST OR EMPTY STATE */}
+      {/* POLL LIST / EMPTY STATE */}
       {!polls || polls.length === 0 ? (
         <div
           className="
@@ -201,8 +200,6 @@ export const Home = () => {
             rounded-2xl shadow-xl border border-white/10
             p-12 text-center mt-20
             animate-fadeInSlow
-            hover:shadow-[0_0_35px_rgba(120,80,255,0.4)]
-            transition-all duration-500
           "
         >
           <TrendingUp className="w-16 h-16 text-gray-300 mx-auto mb-6 animate-pulse" />
@@ -215,19 +212,19 @@ export const Home = () => {
             Be the first to create a poll!
           </p>
 
-          <a
-            href="/create"
+          {/* ✅ FIXED NAVIGATION */}
+          <Link
+            to="/create"
             className="
               inline-block px-10 py-3 rounded-lg font-semibold
               bg-gradient-to-r from-[#3B82F6] to-[#A855F7]
-              text-white shadow-lg 
-              hover:shadow-[0_0_25px_rgba(140,100,255,0.6)]
+              text-white shadow-lg
               hover:scale-105
               transition-all duration-300
             "
           >
             Create Your First Poll
-          </a>
+          </Link>
         </div>
       ) : (
         <div className="w-full flex justify-center mt-16 animate-fadeInSlow">

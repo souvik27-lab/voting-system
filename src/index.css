@@ -27,6 +27,48 @@ body,
   }
 }
 
+
+/* ===============================
+   GREY BOX – SOFT FLOAT
+================================ */
+@keyframes cardFloat {
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-6px);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+.animate-card-float {
+  animation: cardFloat 6s ease-in-out infinite;
+}
+
+/* ===============================
+   ICON – SOFT GLOW PULSE
+================================ */
+@keyframes iconGlow {
+  0% {
+    filter: drop-shadow(0 0 4px rgba(139, 92, 246, 0.3));
+    opacity: 0.85;
+  }
+  50% {
+    filter: drop-shadow(0 0 12px rgba(139, 92, 246, 0.7));
+    opacity: 1;
+  }
+  100% {
+    filter: drop-shadow(0 0 4px rgba(139, 92, 246, 0.3));
+    opacity: 0.85;
+  }
+}
+
+.animate-icon-glow {
+  animation: iconGlow 3.5s ease-in-out infinite;
+}
+
 @keyframes fadeInSlow {
   0% {
     opacity: 0;

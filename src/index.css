@@ -3,18 +3,18 @@
 @tailwind utilities;
 
 /* ===============================
-   REMOVE SCROLLBAR (GLOBAL)
+   GLOBAL FIX (NO SCROLLBAR)
 ================================ */
 html,
-body {
-  margin: 0;
-  padding: 0;
+body,
+#root {
   height: 100%;
-  overflow: hidden;
+  margin: 0;
+  overflow: hidden; /* ✅ MAIN SCROLL FIX */
 }
 
 /* ===============================
-   FADE IN ANIMATIONS
+   BASIC FADE IN ANIMATION
 ================================ */
 @keyframes fadeIn {
   from {
@@ -39,11 +39,11 @@ body {
 }
 
 .animate-fadeInSlow {
-  animation: fadeInSlow 0.9s ease-out forwards;
+  animation: fadeInSlow 0.8s ease-out forwards;
 }
 
 /* ===============================
-   SOFT FLOAT (GREY BOX ONLY)
+   SOFT FLOAT (ONLY GREY BOX)
 ================================ */
 @keyframes softFloat {
   0% {

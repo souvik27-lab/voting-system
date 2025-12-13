@@ -224,6 +224,187 @@
 
 
 
+// import { useState, FormEvent } from "react";
+// import { useNavigate } from "react-router-dom";
+// import { useCreatePoll } from "../api/hooks";
+// import { PlusCircle, X, CheckCircle } from "lucide-react";
+
+// export const CreatePoll = () => {
+//   const navigate = useNavigate();
+//   const createPollMutation = useCreatePoll();
+
+//   const [title, setTitle] = useState("");
+//   const [options, setOptions] = useState(["", ""]);
+
+//   const addOption = () => setOptions([...options, ""]);
+
+//   const removeOption = (index: number) => {
+//     if (options.length > 2) {
+//       setOptions(options.filter((_, i) => i !== index));
+//     }
+//   };
+
+//   const updateOption = (index: number, value: string) => {
+//     const updated = [...options];
+//     updated[index] = value;
+//     setOptions(updated);
+//   };
+
+//   const handleSubmit = async (e: FormEvent) => {
+//     e.preventDefault();
+
+//     const validOptions = options.filter((o) => o.trim() !== "");
+//     if (!title.trim() || validOptions.length < 2) return;
+
+//     const poll = await createPollMutation.mutateAsync({
+//       title: title.trim(),
+//       description: "",
+//       options: validOptions,
+//     });
+
+//     navigate(`/poll/${poll.id}`);
+//   };
+
+//   return (
+//     <div className="flex justify-center pt-20 pb-32">
+
+//       {/* MAIN CARD */}
+//       <div
+//         className="
+//           w-[850px] bg-white/5 backdrop-blur-2xl
+//           border border-white/10 rounded-3xl p-12
+
+//           animate-card-entry
+//           hover:shadow-[0_0_45px_rgba(139,92,246,0.25)]
+//           transition-all duration-500
+//         "
+//       >
+//         {/* TITLE */}
+//         <h1 className="
+//           text-5xl font-extrabold text-center
+//           bg-gradient-to-r from-[#A855F7] via-[#8B5CF6] to-[#3B82F6]
+//           bg-clip-text text-transparent
+//         ">
+//           Create New Poll
+//         </h1>
+
+//         <p className="text-center text-gray-300 mt-2">
+//           Ask a question and let people vote!
+//         </p>
+
+//         {/* FORM */}
+//         <form onSubmit={handleSubmit} className="mt-12 space-y-8">
+
+//           {/* QUESTION */}
+//           <div className="animate-input-pop">
+//             <label className="font-semibold">Poll Question</label>
+//             <input
+//               type="text"
+//               value={title}
+//               onChange={(e) => setTitle(e.target.value)}
+//               placeholder="Enter your question..."
+//               className="
+//                 w-full mt-2 px-5 py-4 rounded-xl
+//                 bg-white/10 text-white border border-white/20
+//                 focus:border-[#60A5FA] focus:shadow-[0_0_12px_rgba(96,165,250,0.4)]
+//                 outline-none transition-all duration-300
+//               "
+//             />
+//           </div>
+
+//           {/* OPTIONS */}
+//           <div className="space-y-4 animate-input-pop">
+//             <div className="flex justify-between items-center">
+//               <label className="font-semibold">Options (minimum 2)</label>
+
+//               <button
+//                 type="button"
+//                 onClick={addOption}
+//                 className="
+//                   flex items-center gap-2 px-4 py-2 rounded-lg text-sm
+//                   bg-gradient-to-r from-[#A855F7] to-[#3B82F6]
+//                   hover:scale-105 transition-all
+//                 "
+//               >
+//                 <PlusCircle size={16} /> Add Option
+//               </button>
+//             </div>
+
+//             {options.map((opt, i) => (
+//               <div key={i} className="flex gap-3">
+//                 <input
+//                   value={opt}
+//                   onChange={(e) => updateOption(i, e.target.value)}
+//                   placeholder={`Option ${i + 1}`}
+//                   className="
+//                     flex-1 px-5 py-4 rounded-xl
+//                     bg-white/10 border border-white/20
+//                     focus:border-[#60A5FA]
+//                     outline-none transition-all
+//                   "
+//                 />
+
+//                 {options.length > 2 && (
+//                   <button
+//                     type="button"
+//                     onClick={() => removeOption(i)}
+//                     className="
+//                       px-3 rounded-xl
+//                       bg-red-500/20 border border-red-500/40
+//                       hover:bg-red-500/30 transition
+//                     "
+//                   >
+//                     <X />
+//                   </button>
+//                 )}
+//               </div>
+//             ))}
+//           </div>
+
+//           {/* BUTTONS */}
+//           <div className="flex gap-4 pt-4 animate-input-pop">
+
+//             {/* CREATE */}
+//             <button
+//               type="submit"
+//               disabled={createPollMutation.isPending}
+//               className="
+//                 flex-1 py-4 rounded-xl font-bold
+//                 bg-gradient-to-r from-[#3B82F6] to-[#A855F7]
+//                 hover:from-[#A855F7] hover:to-[#3B82F6]
+//                 active:scale-95 transition-all duration-300
+//               "
+//             >
+//               {createPollMutation.isPending ? "Creating..." : "Create Poll"}
+//             </button>
+
+//             {/* CANCEL */}
+//             <button
+//               type="button"
+//               onClick={() => navigate("/")}
+//               className="
+//                 px-8 py-4 rounded-xl
+//                 bg-white/10 border border-white/20
+//                 hover:bg-white/20 transition
+//               "
+//             >
+//               Cancel
+//             </button>
+//           </div>
+//         </form>
+//       </div>
+//     </div>
+//   );
+// };
+
+
+
+
+
+
+
+
+
 import { useState, FormEvent } from "react";
 import { useNavigate } from "react-router-dom";
 import { useCreatePoll } from "../api/hooks";
@@ -266,48 +447,51 @@ export const CreatePoll = () => {
   };
 
   return (
-    <div className="flex justify-center pt-20 pb-32">
+    <div className="min-h-[calc(100vh-80px)] flex items-center justify-center px-6">
 
       {/* MAIN CARD */}
       <div
         className="
-          w-[850px] bg-white/5 backdrop-blur-2xl
-          border border-white/10 rounded-3xl p-12
+          w-[720px]
+          bg-white/5 backdrop-blur-2xl
+          border border-white/10 rounded-3xl
+          p-10
 
           animate-card-entry
-          hover:shadow-[0_0_45px_rgba(139,92,246,0.25)]
+          hover:shadow-[0_0_40px_rgba(139,92,246,0.25)]
           transition-all duration-500
         "
       >
         {/* TITLE */}
         <h1 className="
-          text-5xl font-extrabold text-center
+          text-4xl font-extrabold text-center
           bg-gradient-to-r from-[#A855F7] via-[#8B5CF6] to-[#3B82F6]
           bg-clip-text text-transparent
         ">
           Create New Poll
         </h1>
 
-        <p className="text-center text-gray-300 mt-2">
+        <p className="text-center text-gray-300 mt-2 text-sm">
           Ask a question and let people vote!
         </p>
 
         {/* FORM */}
-        <form onSubmit={handleSubmit} className="mt-12 space-y-8">
+        <form onSubmit={handleSubmit} className="mt-10 space-y-7">
 
           {/* QUESTION */}
           <div className="animate-input-pop">
-            <label className="font-semibold">Poll Question</label>
+            <label className="font-semibold text-sm">Poll Question</label>
             <input
               type="text"
               value={title}
               onChange={(e) => setTitle(e.target.value)}
               placeholder="Enter your question..."
               className="
-                w-full mt-2 px-5 py-4 rounded-xl
+                w-full mt-2 px-5 py-3 rounded-xl
                 bg-white/10 text-white border border-white/20
-                focus:border-[#60A5FA] focus:shadow-[0_0_12px_rgba(96,165,250,0.4)]
-                outline-none transition-all duration-300
+                focus:border-[#60A5FA]
+                focus:shadow-[0_0_12px_rgba(96,165,250,0.4)]
+                outline-none transition-all
               "
             />
           </div>
@@ -315,7 +499,9 @@ export const CreatePoll = () => {
           {/* OPTIONS */}
           <div className="space-y-4 animate-input-pop">
             <div className="flex justify-between items-center">
-              <label className="font-semibold">Options (minimum 2)</label>
+              <label className="font-semibold text-sm">
+                Options (minimum 2)
+              </label>
 
               <button
                 type="button"
@@ -323,7 +509,7 @@ export const CreatePoll = () => {
                 className="
                   flex items-center gap-2 px-4 py-2 rounded-lg text-sm
                   bg-gradient-to-r from-[#A855F7] to-[#3B82F6]
-                  hover:scale-105 transition-all
+                  hover:scale-105 transition
                 "
               >
                 <PlusCircle size={16} /> Add Option
@@ -337,10 +523,10 @@ export const CreatePoll = () => {
                   onChange={(e) => updateOption(i, e.target.value)}
                   placeholder={`Option ${i + 1}`}
                   className="
-                    flex-1 px-5 py-4 rounded-xl
+                    flex-1 px-5 py-3 rounded-xl
                     bg-white/10 border border-white/20
                     focus:border-[#60A5FA]
-                    outline-none transition-all
+                    outline-none transition
                   "
                 />
 
@@ -362,28 +548,26 @@ export const CreatePoll = () => {
           </div>
 
           {/* BUTTONS */}
-          <div className="flex gap-4 pt-4 animate-input-pop">
+          <div className="flex gap-4 pt-3 animate-input-pop">
 
-            {/* CREATE */}
             <button
               type="submit"
               disabled={createPollMutation.isPending}
               className="
-                flex-1 py-4 rounded-xl font-bold
+                flex-1 py-3 rounded-xl font-semibold
                 bg-gradient-to-r from-[#3B82F6] to-[#A855F7]
                 hover:from-[#A855F7] hover:to-[#3B82F6]
-                active:scale-95 transition-all duration-300
+                active:scale-95 transition-all
               "
             >
               {createPollMutation.isPending ? "Creating..." : "Create Poll"}
             </button>
 
-            {/* CANCEL */}
             <button
               type="button"
               onClick={() => navigate("/")}
               className="
-                px-8 py-4 rounded-xl
+                px-7 py-3 rounded-xl
                 bg-white/10 border border-white/20
                 hover:bg-white/20 transition
               "
